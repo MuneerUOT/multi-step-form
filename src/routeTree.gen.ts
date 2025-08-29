@@ -8,52 +8,155 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
+import { Route as rootRouteImport } from "./routes/__root";
+import { Route as multiStepFromRouteRouteImport } from "./routes/(multi-step-from)/routee";
+import { Route as IndexRouteImport } from "./routes/index";
+import { Route as multiStepFromStep4RouteImport } from "./routes/(multi-step-from)/step44";
+import { Route as multiStepFromStep3RouteImport } from "./routes/(multi-step-from)/step33";
+import { Route as multiStepFromStep2RouteImport } from "./routes/(multi-step-from)/step22";
+import { Route as multiStepFromStep1RouteImport } from "./routes/(multi-step-from)/step11";
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const multiStepFromRouteRoute = multiStepFromRouteRouteImport.update({
+  id: "/(multi-step-from)",
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
+const IndexRoute = IndexRouteImport.update({
+  id: "/",
+  path: "/",
+  getParentRoute: () => rootRouteImport,
+} as any);
+const multiStepFromStep4Route = multiStepFromStep4RouteImport.update({
+  id: "/step4",
+  path: "/step4",
+  getParentRoute: () => multiStepFromRouteRoute,
+} as any);
+const multiStepFromStep3Route = multiStepFromStep3RouteImport.update({
+  id: "/step3",
+  path: "/step3",
+  getParentRoute: () => multiStepFromRouteRoute,
+} as any);
+const multiStepFromStep2Route = multiStepFromStep2RouteImport.update({
+  id: "/step2",
+  path: "/step2",
+  getParentRoute: () => multiStepFromRouteRoute,
+} as any);
+const multiStepFromStep1Route = multiStepFromStep1RouteImport.update({
+  id: "/step1",
+  path: "/step1",
+  getParentRoute: () => multiStepFromRouteRoute,
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  "/": typeof multiStepFromRouteRouteWithChildren;
+  "/step1": typeof multiStepFromStep1Route;
+  "/step2": typeof multiStepFromStep2Route;
+  "/step3": typeof multiStepFromStep3Route;
+  "/step4": typeof multiStepFromStep4Route;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+  "/": typeof multiStepFromRouteRouteWithChildren;
+  "/step1": typeof multiStepFromStep1Route;
+  "/step2": typeof multiStepFromStep2Route;
+  "/step3": typeof multiStepFromStep3Route;
+  "/step4": typeof multiStepFromStep4Route;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+  __root__: typeof rootRouteImport;
+  "/": typeof IndexRoute;
+  "/(multi-step-from)": typeof multiStepFromRouteRouteWithChildren;
+  "/(multi-step-from)/step1": typeof multiStepFromStep1Route;
+  "/(multi-step-from)/step2": typeof multiStepFromStep2Route;
+  "/(multi-step-from)/step3": typeof multiStepFromStep3Route;
+  "/(multi-step-from)/step4": typeof multiStepFromStep4Route;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
-  fileRoutesById: FileRoutesById
+  fileRoutesByFullPath: FileRoutesByFullPath;
+  fullPaths: "/" | "/step1" | "/step2" | "/step3" | "/step4";
+  fileRoutesByTo: FileRoutesByTo;
+  to: "/" | "/step1" | "/step2" | "/step3" | "/step4";
+  id:
+    | "__root__"
+    | "/"
+    | "/(multi-step-from)"
+    | "/(multi-step-from)/step1"
+    | "/(multi-step-from)/step2"
+    | "/(multi-step-from)/step3"
+    | "/(multi-step-from)/step4";
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+  IndexRoute: typeof IndexRoute;
+  multiStepFromRouteRoute: typeof multiStepFromRouteRouteWithChildren;
 }
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+    "/(multi-step-from)": {
+      id: "/(multi-step-from)";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof multiStepFromRouteRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/": {
+      id: "/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
+    "/(multi-step-from)/step4": {
+      id: "/(multi-step-from)/step4";
+      path: "/step4";
+      fullPath: "/step4";
+      preLoaderRoute: typeof multiStepFromStep4RouteImport;
+      parentRoute: typeof multiStepFromRouteRoute;
+    };
+    "/(multi-step-from)/step3": {
+      id: "/(multi-step-from)/step3";
+      path: "/step3";
+      fullPath: "/step3";
+      preLoaderRoute: typeof multiStepFromStep3RouteImport;
+      parentRoute: typeof multiStepFromRouteRoute;
+    };
+    "/(multi-step-from)/step2": {
+      id: "/(multi-step-from)/step2";
+      path: "/step2";
+      fullPath: "/step2";
+      preLoaderRoute: typeof multiStepFromStep2RouteImport;
+      parentRoute: typeof multiStepFromRouteRoute;
+    };
+    "/(multi-step-from)/step1": {
+      id: "/(multi-step-from)/step1";
+      path: "/step1";
+      fullPath: "/step1";
+      preLoaderRoute: typeof multiStepFromStep1RouteImport;
+      parentRoute: typeof multiStepFromRouteRoute;
+    };
   }
 }
 
+interface multiStepFromRouteRouteChildren {
+  multiStepFromStep1Route: typeof multiStepFromStep1Route;
+  multiStepFromStep2Route: typeof multiStepFromStep2Route;
+  multiStepFromStep3Route: typeof multiStepFromStep3Route;
+  multiStepFromStep4Route: typeof multiStepFromStep4Route;
+}
+
+const multiStepFromRouteRouteChildren: multiStepFromRouteRouteChildren = {
+  multiStepFromStep1Route: multiStepFromStep1Route,
+  multiStepFromStep2Route: multiStepFromStep2Route,
+  multiStepFromStep3Route: multiStepFromStep3Route,
+  multiStepFromStep4Route: multiStepFromStep4Route,
+};
+
+const multiStepFromRouteRouteWithChildren =
+  multiStepFromRouteRoute._addFileChildren(multiStepFromRouteRouteChildren);
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-}
+  multiStepFromRouteRoute: multiStepFromRouteRouteWithChildren,
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
