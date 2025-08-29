@@ -75,7 +75,7 @@ export function StepAccount() {
         />
         <div className="flex gap-2">
           <Link to="/">
-            <Button variant="outline">
+            <Button type="button" variant="outline">
               <ArrowLeft /> Cancel
             </Button>
           </Link>
